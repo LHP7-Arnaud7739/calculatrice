@@ -1,7 +1,7 @@
 .container
 {
         width: auto;
-        height: 736rem;
+        height: 100vh;
         background-color: rgb(0, 0, 0);
         border:2px solid #CCCCCC;
         margin:auto;
@@ -17,6 +17,9 @@ height: 25vh;
 }
 .calc_btn_egale{
   
-  height: 5vh;
+  height: 15vh;
+
+}
+.calc_btn{
 
 }
