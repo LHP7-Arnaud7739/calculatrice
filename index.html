@@ -18,71 +18,115 @@
         <!-- AFFICHAGE -->
 
         <div class=" row calc_div_resultat ">
-            <input class="col-12" type="text" readonly="readonly" name="calc_resultat" id="calc_resultat"
-                class="calc_resultat" onkeydown="javascript:key_detect_calc('calc',event);" />
 
-           
+            <input id="firstNumb" class="col-12" />
+            <input id="operation" class="col-12" />
+            <input id="secondNumb" class="col-12" />
+
+            <input id="resultat" class="col-12" />
 
         </div>
-         <!-- BOUTON 7 A 9 ET ADDITIONER -->
+
+        <!-- BOUTON 7 A 9 ET ADDITIONER -->
         <div class="row calc_div_btn">
-            <input type="button" class="col-3 calc_btn bg" value="7" onclick="javascript:add_calc('calc',7);" />
+            <input type="button" id="sept" class="col-3 calc_btn " value="7" onclick="displayNumber(7)" />
 
-            <input type="button" class="col-3 calc_btn" value="8" onclick="javascript:add_calc('calc',8);" />
-
-
-            <input type="button" class="col-3 calc_btn" value="9" onclick="javascript:add_calc('calc',9);" />
+            <input type="button" id="huit" class="col-3 calc_btn" value="8" onclick="displayNumber(8)" />
 
 
-            <input type="button" class="col-3 calc_btn" value="+" onclick="javascript:f_calc('calc','+');" />
+            <input type="button" id="neuf" class="col-3 calc_btn" value="9" onclick="displayNumber(9)" />
+
+
+            <input type="button" id="plus" class="col-3 calc_btnplus" value="+" onclick="displayOperator('+')" />
         </div>
 
         <!-- BOUTON 4 A 6 ET SOUSTRAIRE -->
 
         <div class="row calc_div_btn">
-            <input type="button" class="col-3 calc_btn" value="4" onclick="javascript:add_calc('calc',4);" />
+            <input type="button" id="quatre" class="col-3 calc_btn" value="4" onclick="displayNumber(4)" />
 
 
-            <input type="button" class="col-3 calc_btn" value="5" onclick="javascript:add_calc('calc',5);" />
+            <input type="button" id="cinq" class="col-3 calc_btn" value="5" onclick="displayNumber(5)" />
 
-            <input type="button" class="col-3 calc_btn" value="6" onclick="javascript:add_calc('calc',6);" />
+            <input type="button" id="six" class="col-3 calc_btn" value="6" onclick="displayNumber(6)" />
 
-            <input type="button" class="col-3 calc_btn" value="-" onclick="javascript:f_calc('calc','-');" />
+            <input type="button" id="moins" class="col-3 calc_btnmoins" value="-" onclick="displayOperator('—')" />
         </div>
         <!-- BOUTON 1 A 3 ET MULTIPLIER -->
 
         <div class="row calc_div_btn">
-            <input type="button" class="col-3 calc_btn" value="1" onclick="javascript:add_calc('calc',1);" />
+            <input type="button" id="un" class="col-3 calc_btn" value="1" onclick="displayNumber(1)" />
 
-            <input type="button" class="col-3 calc_btn" value="2" onclick="javascript:add_calc('calc',2);" />
+            <input type="button" id="deux" class="col-3 calc_btn" value="2" onclick="displayNumber(2)" />
 
-            <input type="button" class="col-3 calc_btn" value="3" onclick="javascript:add_calc('calc',3);" />
+            <input type="button" id="trois" class="col-3 calc_btn" value="3" onclick="displayNumber(3)" />
 
-            <input type="button" class="col-3 calc_btn" value="x" onclick="javascript:f_calc('calc','*');" />
+            <input type="button" id="fois" class="col-3 calc_btnx" value="x" onclick="displayOperator('X')" />
         </div>
 
         <!-- BOUTON VIRGULE 0 C ET DIVISER -->
 
         <div class=" row calc_div_btn">
-            <input type="button" class="col-3 calc_btn" value="." onclick="javascript:add_calc('calc','.');" />
+            <input type="button" id="point" class="col-3 calc_btn" value="." onclick="displayPoint()" />
 
-            <input type="button" class="col-3 calc_btn" value="0" onclick="javascript:add_calc('calc',0);" />
+            <input type="button" id="zero" class="col-3 calc_btn" value="0" onclick="displayNumber(0)" />
 
-            <input type="button" class="col-3 calc_btn" value="C" onclick="javascript:f_calc('calc','+-');" />
+            <input type="button" id="supprime" class="col-3 calc_btn" value="C" onclick="reset()" />
 
-            <input type="button" class="col-3 calc_btn" value="/" onclick="javascript:f_calc('calc','');" />
+            <input type="button" id="diviser" class="col-3 calc_btndivis" value="/" onclick="displayOperator('/')" />
         </div>
 
         <!-- BOUTON EGALE -->
 
         <div class=" row calc_div_btn">
-            <input type="button" class="col-12 calc_btn_egale" value="=" onclick="javascript:f_calc('calc','=');" />
+            <input type="button" id="egale" class="col-12 calc_btn_egale" value="=" onclick="displayOperator()" />
         </div>
-</div>
+    </div>
 
 
     </div>
+    <script>
+        // CIBLE LA CASE DANS LAQUELLE ON VA ECRIRE LES PREMIERS NOMBRES//
+        let display = document.getElementById("firstNumb")
 
+        //DECLARE UNE VARIABLE QUI VA NOUS PERMETTRE DE SAVOIR SI NOUS AVONS CLIQUER SUR LE POINT//
+        let point = false
+
+        // FONCTION AFFICHAGE FIRSTNUMBER//
+
+        function displayNumber(number) {
+            display.value += number
+        }
+        // FONCTION AFFICHAGE OPERATOR//
+        function displayOperator(operator) {
+            document.getElementById("operation").value = operator
+            if (display.value.length >= 1) {
+                display = document.getElementById("secondNumb")
+
+            }
+            point = false
+        }
+        //FONCTION RESET//
+
+        function reset() {
+            document.getElementById("firstNumb").value = ""
+            document.getElementById("operation").value = ""
+            document.getElementById("secondNumb").value = ""
+            document.getElementById("resultat").value = ""
+            display = document.getElementById("firstNumb")
+        }
+
+        //FONCTION QUI DETERMINE QUAN
+
+        function displayPoint() {
+            if (!point) {
+                display.value += "."
+
+            }
+            point = true
+
+        }
+    </script>
 
 </body>
 
