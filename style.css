@@ -1,0 +1,22 @@
+.container
+{
+        width: auto;
+        height: 736rem;
+        background-color: rgb(0, 0, 0);
+        border:2px solid #CCCCCC;
+        margin:auto;
+       
+}
+.calc_div_resultat{width: auto;
+height: 25vh;
+}
+.calc_div_btn{width: auto;
+  height: 15vh;
+
+
+}
+.calc_btn_egale{
+  
+  height: 5vh;
+
+}
