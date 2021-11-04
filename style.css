@@ -6,7 +6,10 @@
   margin: auto;
 
 }
+.affichage{font-family: fantasy;
+  text-align: right; 
 
+}
 .calc_div_resultat {
   width: auto;
   height: 25vh;

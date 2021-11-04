@@ -17,13 +17,12 @@
 
         <!-- AFFICHAGE -->
 
-        <div class=" row calc_div_resultat ">
+        <div class="affichage row calc_div_resultat ">
 
-            <input id="firstNumb" class="col-12" />
-            <input id="operation" class="col-12" />
-            <input id="secondNumb" class="col-12" />
-
-            <input id="resultat" class="col-12" />
+            <input id="firstNumb" class="text-end col-12 border border-white" />
+            <input id="operation" class="text-end col-12 border border-white" />
+            <input id="secondNumb" class="text-end col-12 border border-white" />
+            <input id="resultat" class="text-end col-12 border border-white" />
 
         </div>
 
@@ -61,13 +60,13 @@
 
             <input type="button" id="trois" class="col-3 calc_btn" value="3" onclick="displayNumber(3)" />
 
-            <input type="button" id="fois" class="col-3 calc_btnx" value="x" onclick="displayOperator('X')" />
+            <input type="button" id="fois" class="col-3 calc_btnx" value="X" onclick="displayOperator('X')" />
         </div>
 
         <!-- BOUTON VIRGULE 0 C ET DIVISER -->
 
         <div class=" row calc_div_btn">
-            <input type="button" id="point" class="col-3 calc_btn" value="." onclick="displayPoint()" />
+            <input type="button" id="point" class=" col-3 calc_btn" value="." onclick="displayPoint()" />
 
             <input type="button" id="zero" class="col-3 calc_btn" value="0" onclick="displayNumber(0)" />
 
@@ -79,7 +78,7 @@
         <!-- BOUTON EGALE -->
 
         <div class=" row calc_div_btn">
-            <input type="button" id="egale" class="col-12 calc_btn_egale" value="=" onclick="displayOperator()" />
+            <input type="button" id="egale" class="col-12 calc_btn_egale" value="=" onclick="calculate()" />
         </div>
     </div>
 
@@ -100,10 +99,13 @@
         // FONCTION AFFICHAGE OPERATOR//
         function displayOperator(operator) {
             document.getElementById("operation").value = operator
+            //ON CONTROLE LA ZONE FIRSTNUMB POUR VOIR SI ELLE N EST PAS VIDE A L AIDE DE .LENGTH//
             if (display.value.length >= 1) {
+                //ON PASSE SUR LA ZONE SECONDNUMB
                 display = document.getElementById("secondNumb")
 
             }
+            //LORSQUE NOUS CLIQUONS SUR L OPERATEUR ON REACTIVE LE POINT A L AIDE DE LA VARIABLE POINT//
             point = false
         }
         //FONCTION RESET//
@@ -113,17 +115,61 @@
             document.getElementById("operation").value = ""
             document.getElementById("secondNumb").value = ""
             document.getElementById("resultat").value = ""
+
+            //ON RECHARGE LA ZONE PAR DEFAUT SUR FIRSTNUMB
             display = document.getElementById("firstNumb")
+            point = false
         }
 
-        //FONCTION QUI DETERMINE QUAN
+
 
         function displayPoint() {
+            //SI POINT EST DIFFERENT DE FAUX ON AJOUT UN POINT//
             if (!point) {
                 display.value += "."
-
+                //ON PASSE POINT EN VRAI POUR LE DESACTIVER//
             }
             point = true
+
+        }
+        // function calculate(){
+        //         let nb1=document.getElementById("firstNumb").value
+        //             let nb2=document.getElementById("secondNumb").value
+        //             document.getElementById("resultat").value= nb1 * nb2}
+
+        function calculate() {
+            let nb1 = Number(document.getElementById("firstNumb").value)
+            let nb2 = Number(document.getElementById("secondNumb").value)
+            let operator = document.getElementById("operation").value
+            let resultat
+            switch (operator) {
+
+                case '+':
+                    resultat = nb1 + nb2
+
+                    break
+
+                case '—':
+
+                    resultat = nb1 - nb2
+
+                    break
+
+                case 'X':
+
+                    resultat = nb1 * nb2
+
+                    break
+                case '/':
+
+                    resultat = nb1 / nb2
+
+                    break
+
+
+            }
+            console.log (resultat)
+            document.getElementById("resultat").value = resultat
 
         }
     </script>
